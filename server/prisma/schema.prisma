@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Campaign {
+  campaign_id        String   @id
+  campaign_name      String
+  status             String
+  campaign_objective String
+
+  ads      Ad[]
+  insights Insight[]
+}
+
+model Ad {
+  ad_id       String @id
+  campaign_id String
+  creative_id String
+  date_start  String
+  date_end    String
+  name        String
+  description String
+  status      String
+
+  campaign Campaign  @relation(fields: [campaign_id], references: [campaign_id])
+  creative Creative  @relation(fields: [creative_id], references: [creative_id])
+  insights Insight[]
+}
+
+model Creative {
+  creative_id   String @id
+  creative_type String
+  thumbnail_url String
+
+  ads Ad[]
+}
+
+model Insight {
+  insight_id       String @id
+  date             String
+  ad_id            String
+  campaign_id      String
+  impressions      Int
+  clicks           Int
+  spend            Float
+  conversions      Int
+  reach            Int
+  video_views      Int
+  leads            Int
+  conversion_value Float
+
+  ad       Ad       @relation(fields: [ad_id], references: [ad_id])
+  campaign Campaign @relation(fields: [campaign_id], references: [campaign_id])
+}

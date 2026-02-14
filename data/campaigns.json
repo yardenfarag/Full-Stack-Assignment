@@ -1,0 +1,302 @@
+[
+  {
+    "campaign_id": "camp_0001",
+    "campaign_name": "Summer Books Drive 1",
+    "status": "inactive",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0002",
+    "campaign_name": "Retargeting Gadgets Push 2",
+    "status": "inactive",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0003",
+    "campaign_name": "Brand Jackets Boost 3",
+    "status": "inactive",
+    "campaign_objective": "SALES"
+  },
+  {
+    "campaign_id": "camp_0004",
+    "campaign_name": "Clearance Bags Blitz 4",
+    "status": "inactive",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0005",
+    "campaign_name": "Winter Jackets Campaign 5",
+    "status": "inactive",
+    "campaign_objective": "SALES"
+  },
+  {
+    "campaign_id": "camp_0006",
+    "campaign_name": "Performance Books Awareness 6",
+    "status": "inactive",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0007",
+    "campaign_name": "Performance Toys Push 7",
+    "status": "inactive",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0008",
+    "campaign_name": "Brand Bags Blitz 8",
+    "status": "inactive",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0009",
+    "campaign_name": "Summer Tools Engagement 9",
+    "status": "inactive",
+    "campaign_objective": "LEADS"
+  },
+  {
+    "campaign_id": "camp_0010",
+    "campaign_name": "Performance Home Decor Conversions 10",
+    "status": "inactive",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0011",
+    "campaign_name": "Retargeting Headphones Boost 11",
+    "status": "inactive",
+    "campaign_objective": "LEADS"
+  },
+  {
+    "campaign_id": "camp_0012",
+    "campaign_name": "Retargeting Skincare Sale 12",
+    "status": "inactive",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0013",
+    "campaign_name": "Prospecting Watches Campaign 13",
+    "status": "inactive",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0014",
+    "campaign_name": "VIP Jackets Drive 14",
+    "status": "inactive",
+    "campaign_objective": "SALES"
+  },
+  {
+    "campaign_id": "camp_0015",
+    "campaign_name": "Prospecting Watches Conversions 15",
+    "status": "inactive",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0016",
+    "campaign_name": "VIP Coffee Push 16",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0017",
+    "campaign_name": "Prospecting Watches Conversions 17",
+    "status": "active",
+    "campaign_objective": "SALES"
+  },
+  {
+    "campaign_id": "camp_0018",
+    "campaign_name": "Promo Sneakers Sale 18",
+    "status": "active",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0019",
+    "campaign_name": "Launch Bags Campaign 19",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0020",
+    "campaign_name": "Brand Gadgets Push 20",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0021",
+    "campaign_name": "Evergreen Home Decor Boost 21",
+    "status": "active",
+    "campaign_objective": "SALES"
+  },
+  {
+    "campaign_id": "camp_0022",
+    "campaign_name": "Prospecting Tools Blitz 22",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0023",
+    "campaign_name": "VIP Books Campaign 23",
+    "status": "active",
+    "campaign_objective": "SALES"
+  },
+  {
+    "campaign_id": "camp_0024",
+    "campaign_name": "Evergreen Toys Drive 24",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0025",
+    "campaign_name": "Flash Sunglasses Campaign 25",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0026",
+    "campaign_name": "Performance Sneakers Reach 26",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0027",
+    "campaign_name": "Prospecting Coffee Sale 27",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0028",
+    "campaign_name": "Prospecting Jackets Engagement 28",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0029",
+    "campaign_name": "Flash Bags Blitz 29",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0030",
+    "campaign_name": "Seasonal Sneakers Engagement 30",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0031",
+    "campaign_name": "Promo Jackets Drive 31",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0032",
+    "campaign_name": "Fall Headphones Awareness 32",
+    "status": "active",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0033",
+    "campaign_name": "Performance Bags Campaign 33",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0034",
+    "campaign_name": "Flash Bags Reach 34",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0035",
+    "campaign_name": "VIP Home Decor Push 35",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0036",
+    "campaign_name": "Evergreen Headphones Push 36",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0037",
+    "campaign_name": "Flash Gadgets Push 37",
+    "status": "active",
+    "campaign_objective": "LEADS"
+  },
+  {
+    "campaign_id": "camp_0038",
+    "campaign_name": "Performance Skincare Drive 38",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0039",
+    "campaign_name": "Flash Laptops Campaign 39",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0040",
+    "campaign_name": "Flash Jackets Campaign 40",
+    "status": "active",
+    "campaign_objective": "LEADS"
+  },
+  {
+    "campaign_id": "camp_0041",
+    "campaign_name": "Prospecting Headphones Sale 41",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0042",
+    "campaign_name": "Winter Tools Awareness 42",
+    "status": "active",
+    "campaign_objective": "SALES"
+  },
+  {
+    "campaign_id": "camp_0043",
+    "campaign_name": "Evergreen Skincare Boost 43",
+    "status": "active",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0044",
+    "campaign_name": "Clearance Gadgets Awareness 44",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0045",
+    "campaign_name": "Launch Tools Reach 45",
+    "status": "active",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0046",
+    "campaign_name": "Seasonal Gadgets Engagement 46",
+    "status": "active",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0047",
+    "campaign_name": "Retargeting Fitness Sale 47",
+    "status": "active",
+    "campaign_objective": "AWARENESS"
+  },
+  {
+    "campaign_id": "camp_0048",
+    "campaign_name": "Brand Books Push 48",
+    "status": "active",
+    "campaign_objective": "TRAFFIC"
+  },
+  {
+    "campaign_id": "camp_0049",
+    "campaign_name": "Holiday Books Campaign 49",
+    "status": "active",
+    "campaign_objective": "ENGAGEMENT"
+  },
+  {
+    "campaign_id": "camp_0050",
+    "campaign_name": "VIP Laptops Drive 50",
+    "status": "active",
+    "campaign_objective": "LEADS"
+  }
+]
