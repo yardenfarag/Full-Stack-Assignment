@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { PrismaClient } from "@prisma/client";
+import { config } from "./config.js";
 
 declare module "fastify" {
   interface FastifyInstance {
@@ -31,8 +32,8 @@ async function main() {
   // ---------------------------------------------------------------------------
 
   try {
-    await server.listen({ port: 3000, host: "0.0.0.0" });
-    console.log("Server running on http://localhost:3000");
+    await server.listen({ port: config.ports.server, host: "0.0.0.0" });
+    console.log(`Server running on http://localhost:${config.ports.server}`);
   } catch (err) {
     server.log.error(err);
     process.exit(1);

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "build": "esbuild src/index.ts --bundle --minify --platform=node --format=esm --target=es2022 --external:fastify --external:@fastify/cors --outfile=dist/server.mjs",
+    "dev": "node dist/server.mjs",
+    "dev:src": "tsx watch src/index.ts",
     "test": "vitest run"
   },
   "dependencies": {

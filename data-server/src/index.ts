@@ -1,16 +1,15 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { readFileSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
 import { campaignsRoutes } from "./routes/campaigns.js";
 import { adsRoutes } from "./routes/ads.js";
 import { creativesRoutes } from "./routes/creatives.js";
 import { insightsRoutes } from "./routes/insights.js";
 import { checkRandomError, delay, RESPONSE_DELAY_MS } from "./utils.js";
+import { config } from "./config.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = join(__dirname, "../../data");
+const DATA_DIR = join(process.cwd(), "../data");
 
 function loadJSON<T>(filename: string): T {
   const raw = readFileSync(join(DATA_DIR, filename), "utf-8");
@@ -106,8 +105,8 @@ async function main() {
   });
 
   try {
-    await server.listen({ port: 3001, host: "0.0.0.0" });
-    console.log("Data server running on http://localhost:3001");
+    await server.listen({ port: config.ports.dataServer, host: "0.0.0.0" });
+    console.log(`Data server running on http://localhost:${config.ports.dataServer}`);
   } catch (err) {
     server.log.error(err);
     process.exit(1);

@@ -1,0 +1,8 @@
+{
+  "ports": {
+    "dataServer": 3001,
+    "server": 3000,
+    "client": 5173,
+    "postgres": 5432
+  }
+}
