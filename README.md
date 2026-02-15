@@ -250,7 +250,7 @@ These are ways to go further — pick any that interest you:
 ## Submission
 
 1. Push to a Git repository of your own, make it public
-2. Include a `README.md` with:
+2. Include a `IMPLEMENTATION.md` with:
    - Setup instructions
    - Design decisions and trade-offs you made
    - What you'd improve or do differently given more time
