@@ -1,42 +1,43 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.145 0 0);
-  --color-card: oklch(1 0 0);
-  --color-card-foreground: oklch(0.145 0 0);
+  /* Modern tech color palette - sleek and professional */
+  --color-background: oklch(0.98 0.005 250); /* Cool off-white */
+  --color-foreground: oklch(0.15 0.02 250); /* Deep slate */
+  --color-card: oklch(1 0 0); /* Pure white */
+  --color-card-foreground: oklch(0.15 0.02 250);
   --color-popover: oklch(1 0 0);
-  --color-popover-foreground: oklch(0.145 0 0);
-  --color-primary: oklch(0.205 0 0);
-  --color-primary-foreground: oklch(0.985 0 0);
-  --color-secondary: oklch(0.965 0 0);
-  --color-secondary-foreground: oklch(0.205 0 0);
-  --color-muted: oklch(0.965 0 0);
-  --color-muted-foreground: oklch(0.556 0 0);
-  --color-accent: oklch(0.965 0 0);
-  --color-accent-foreground: oklch(0.205 0 0);
-  --color-destructive: oklch(0.577 0.245 27.325);
-  --color-destructive-foreground: oklch(0.577 0.245 27.325);
-  --color-border: oklch(0.922 0 0);
-  --color-input: oklch(0.922 0 0);
-  --color-ring: oklch(0.708 0 0);
-  --color-chart-1: oklch(0.646 0.222 41.116);
-  --color-chart-2: oklch(0.6 0.118 184.704);
-  --color-chart-3: oklch(0.398 0.07 227.392);
-  --color-chart-4: oklch(0.828 0.189 84.429);
-  --color-chart-5: oklch(0.769 0.188 70.08);
-  --color-sidebar: oklch(0.985 0 0);
-  --color-sidebar-foreground: oklch(0.145 0 0);
-  --color-sidebar-primary: oklch(0.205 0 0);
-  --color-sidebar-primary-foreground: oklch(0.985 0 0);
-  --color-sidebar-accent: oklch(0.965 0 0);
-  --color-sidebar-accent-foreground: oklch(0.205 0 0);
-  --color-sidebar-border: oklch(0.922 0 0);
-  --color-sidebar-ring: oklch(0.708 0 0);
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
+  --color-popover-foreground: oklch(0.15 0.02 250);
+  --color-primary: oklch(0.55 0.22 260); /* Modern blue-purple */
+  --color-primary-foreground: oklch(0.98 0.005 250);
+  --color-secondary: oklch(0.96 0.01 250); /* Light slate */
+  --color-secondary-foreground: oklch(0.15 0.02 250);
+  --color-muted: oklch(0.94 0.008 250); /* Subtle gray */
+  --color-muted-foreground: oklch(0.45 0.015 250);
+  --color-accent: oklch(0.6 0.18 200); /* Tech blue */
+  --color-accent-foreground: oklch(0.98 0.005 250);
+  --color-destructive: oklch(0.55 0.22 15); /* Modern red */
+  --color-destructive-foreground: oklch(0.98 0.005 250);
+  --color-border: oklch(0.88 0.01 250); /* Subtle border */
+  --color-input: oklch(0.96 0.01 250);
+  --color-ring: oklch(0.55 0.22 260); /* Match primary */
+  --color-chart-1: oklch(0.55 0.22 260); /* Blue-purple */
+  --color-chart-2: oklch(0.6 0.18 200); /* Blue */
+  --color-chart-3: oklch(0.65 0.2 160); /* Teal */
+  --color-chart-4: oklch(0.6 0.2 80); /* Green */
+  --color-chart-5: oklch(0.65 0.18 40); /* Orange */
+  --color-sidebar: oklch(0.99 0.005 250);
+  --color-sidebar-foreground: oklch(0.15 0.02 250);
+  --color-sidebar-primary: oklch(0.55 0.22 260);
+  --color-sidebar-primary-foreground: oklch(0.98 0.005 250);
+  --color-sidebar-accent: oklch(0.96 0.01 250);
+  --color-sidebar-accent-foreground: oklch(0.15 0.02 250);
+  --color-sidebar-border: oklch(0.88 0.01 250);
+  --color-sidebar-ring: oklch(0.55 0.22 260);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
 }
 
 @layer base {
@@ -44,6 +45,26 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Modern scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: oklch(0.96 0.01 250);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.7 0.015 250);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.6 0.02 250);
   }
 }

@@ -257,3 +257,5 @@ These are ways to go further — pick any that interest you:
 3. Project should run with `./setup.sh` + starting the three services
 
 If anything is unclear, make reasonable assumptions and document them.
+
+---

@@ -4,5 +4,15 @@
     "server": 3000,
     "client": 5173,
     "postgres": 5432
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "baseUrl": "http://localhost"
+  },
+  "endpoints": {
+    "sync": "/api/sync",
+    "syncStatus": "/api/sync/status",
+    "performance": "/api/performance",
+    "columns": "/api/columns"
   }
 }

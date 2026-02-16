@@ -56,4 +56,11 @@ model Insight {
 
   ad       Ad       @relation(fields: [ad_id], references: [ad_id])
   campaign Campaign @relation(fields: [campaign_id], references: [campaign_id])
+
+  // Indexes for frequently queried fields
+  @@index([date])
+  @@index([campaign_id])
+  @@index([ad_id])
+  // Composite index for common query pattern (date range + campaign filtering)
+  @@index([date, campaign_id])
 }

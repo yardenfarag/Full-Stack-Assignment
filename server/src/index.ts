@@ -2,6 +2,9 @@ import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { PrismaClient } from "@prisma/client";
 import { config } from "./config.js";
+import { syncRoutes } from "./routes/sync.js";
+import { columnsRoutes } from "./routes/columns.js";
+import { performanceRoutes } from "./routes/performance.js";
 
 declare module "fastify" {
   interface FastifyInstance {
@@ -23,17 +26,14 @@ async function main() {
     await prisma.$disconnect();
   });
 
-  // ---------------------------------------------------------------------------
-  // TODO: Your implementation goes here!
-  //
-  // See home-assignment.md for the full requirements.
-  // See data-server/API.md for the external data server documentation.
-  // See server/DATABASE.md and server/prisma/schema.prisma for the DB schema.
-  // ---------------------------------------------------------------------------
+  // Register routes
+  await server.register(syncRoutes);
+  await server.register(columnsRoutes);
+  await server.register(performanceRoutes);
 
   try {
-    await server.listen({ port: config.ports.server, host: "0.0.0.0" });
-    console.log(`Server running on http://localhost:${config.ports.server}`);
+    await server.listen({ port: config.ports.server, host: config.server.host });
+    console.log(`${config.server.baseUrl}:${config.ports.server}`);
   } catch (err) {
     server.log.error(err);
     process.exit(1);

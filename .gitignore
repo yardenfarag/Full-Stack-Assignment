@@ -2,5 +2,6 @@ node_modules
 dist
 !data-server/dist
 *.log
+logs/
 .DS_Store
 .env
