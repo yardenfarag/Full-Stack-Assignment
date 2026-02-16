@@ -21,6 +21,8 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   });
   const syncStartTimeRef = useRef<number | null>(null);
   const [estimatedTimeRemaining, setEstimatedTimeRemaining] = useState<string | null>(null);
+  const lastEntityTypeRef = useRef<string | null>(null);
+  const lastProgressRef = useRef<number>(0);
 
   useEffect(() => {
     const eventSource = new EventSource(API_ENDPOINTS.SYNC_STATUS);
@@ -70,6 +72,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
 
       if (total === 0 || totalFetched === 0) {
         setEstimatedTimeRemaining(null);
+        lastProgressRef.current = 0;
         return;
       }
 
@@ -79,22 +82,45 @@ export function SyncProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      const elapsed = Date.now() - syncStartTimeRef.current!;
-      const estimatedTotal = elapsed / progressPercent;
-      const remaining = estimatedTotal - elapsed;
+      // Determine current phase (campaigns/creatives/ads run in parallel, insights run separately)
+      let currentPhase: string | null = null;
+      const isInitialPhase = 
+        (progress.campaigns.total > 0 && progress.campaigns.fetched < progress.campaigns.total) ||
+        (progress.creatives.total > 0 && progress.creatives.fetched < progress.creatives.total) ||
+        (progress.ads.total > 0 && progress.ads.fetched < progress.ads.total);
+      const isInsightsPhase = progress.insights.total > 0 && progress.insights.fetched < progress.insights.total;
+      
+      if (isInsightsPhase) {
+        currentPhase = "insights";
+      } else if (isInitialPhase) {
+        currentPhase = "initial"; // campaigns, creatives, ads in parallel
+      }
 
-      // Format time remaining
-      const seconds = Math.ceil(remaining / 1000);
-      if (seconds < 60) {
-        setEstimatedTimeRemaining(`about ${seconds}s remaining`);
-      } else if (seconds < 3600) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        setEstimatedTimeRemaining(`about ${minutes}m ${secs}s remaining`);
-      } else {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        setEstimatedTimeRemaining(`about ${hours}h ${minutes}m remaining`);
+      // Only recalculate ETA if phase changed or progress increased significantly (2% change to reduce fluctuations)
+      const progressChanged = Math.abs(progressPercent - lastProgressRef.current) > 0.02; // 2% change
+      const phaseChanged = currentPhase !== lastEntityTypeRef.current;
+
+      if (phaseChanged || progressChanged) {
+        lastEntityTypeRef.current = currentPhase;
+        lastProgressRef.current = progressPercent;
+
+        const elapsed = Date.now() - syncStartTimeRef.current!;
+        const estimatedTotal = elapsed / progressPercent;
+        const remaining = estimatedTotal - elapsed;
+
+        // Format time remaining
+        const seconds = Math.ceil(remaining / 1000);
+        if (seconds < 60) {
+          setEstimatedTimeRemaining(`about ${seconds}s remaining`);
+        } else if (seconds < 3600) {
+          const minutes = Math.floor(seconds / 60);
+          const secs = seconds % 60;
+          setEstimatedTimeRemaining(`about ${minutes}m ${secs}s remaining`);
+        } else {
+          const hours = Math.floor(seconds / 3600);
+          const minutes = Math.floor((seconds % 3600) / 60);
+          setEstimatedTimeRemaining(`about ${hours}h ${minutes}m remaining`);
+        }
       }
     };
 

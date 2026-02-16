@@ -8,9 +8,10 @@ interface DateRangePickerProps {
   to: string;
   onChange: (from: string, to: string) => void;
   className?: string;
+  disabled?: boolean;
 }
 
-export function DateRangePicker({ from, to, onChange, className }: DateRangePickerProps) {
+export function DateRangePicker({ from, to, onChange, className, disabled = false }: DateRangePickerProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [localFrom, setLocalFrom] = React.useState(from);
   const [localTo, setLocalTo] = React.useState(to);
@@ -30,8 +31,13 @@ export function DateRangePicker({ from, to, onChange, className }: DateRangePick
   return (
     <div className={cn("relative", className)}>
       <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background cursor-pointer hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        className={cn(
+          "flex items-center gap-2 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background",
+          disabled
+            ? "opacity-50 cursor-not-allowed"
+            : "cursor-pointer hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        )}
       >
         <Calendar className="h-4 w-4 text-muted-foreground" />
         <span className={cn("flex-1 text-left", !from || !to ? "text-muted-foreground" : "")}>

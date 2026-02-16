@@ -2,14 +2,17 @@ import { useState, useEffect } from "react";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Target, Filter, RefreshCw, BarChart3 } from "lucide-react";
+import { Calendar, Target, Filter, RefreshCw, BarChart3, AlertCircle } from "lucide-react";
 import { usePerformance } from "@/contexts/PerformanceContext";
+import { useSync } from "@/contexts/SyncContext";
 import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { DATE_PRESETS, OBJECTIVES } from "@/config";
 import type { FilterState } from "@/models";
 
 export function Sidebar() {
   const { filters, setFilters, grouping, setGrouping } = usePerformance();
+  const { progress: syncProgress } = useSync();
+  const isSyncing = syncProgress.status === "syncing";
   
   // Local state for pending filter changes
   const [pendingFilters, setPendingFilters] = useState<FilterState>(filters);
@@ -59,6 +62,16 @@ export function Sidebar() {
           </div>
         </div>
 
+        {/* Sync Warning */}
+        {isSyncing && (
+          <div className="rounded-lg bg-muted/50 border border-border p-3 flex items-start gap-2">
+            <AlertCircle className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+            <p className="text-xs text-muted-foreground">
+              Filters are disabled while data is syncing. Please wait for sync to complete.
+            </p>
+          </div>
+        )}
+
         {/* Grouping Selector */}
         <div className="space-y-2">
           <label className="text-xs font-semibold text-muted-foreground tracking-wide">View Mode</label>
@@ -68,6 +81,7 @@ export function Sidebar() {
               onClick={() => setPendingGrouping("campaign")}
               className="flex-1 cursor-pointer"
               size="sm"
+              disabled={isSyncing}
             >
               Campaign
             </Button>
@@ -76,6 +90,7 @@ export function Sidebar() {
               onClick={() => setPendingGrouping("ad")}
               className="flex-1 cursor-pointer"
               size="sm"
+              disabled={isSyncing}
             >
               Ad
             </Button>
@@ -101,6 +116,7 @@ export function Sidebar() {
                 }
               }}
               className="w-full"
+              disabled={isSyncing}
             >
               <option value="">Custom Range</option>
               {DATE_PRESETS.map((preset) => (
@@ -118,6 +134,7 @@ export function Sidebar() {
                   dateRange: { from, to },
                 })
               }
+              disabled={isSyncing}
             />
           </div>
         </div>
@@ -137,6 +154,7 @@ export function Sidebar() {
               })
             }
             className="w-full"
+            disabled={isSyncing}
           >
             <option value="">Select objective...</option>
             {OBJECTIVES.map((obj) => (
@@ -162,6 +180,7 @@ export function Sidebar() {
               })
             }
             className="w-full"
+            disabled={isSyncing}
           >
             <option value="">All</option>
             <option value="active">Active</option>
@@ -185,7 +204,7 @@ export function Sidebar() {
         {/* Apply Button */}
         <Button
           onClick={handleApplyFilters}
-          disabled={!pendingFilters.campaignObjective}
+          disabled={!pendingFilters.campaignObjective || isSyncing}
           className="w-full gap-2"
         >
           <RefreshCw className="h-4 w-4" />

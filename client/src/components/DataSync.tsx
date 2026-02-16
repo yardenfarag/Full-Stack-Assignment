@@ -25,6 +25,39 @@ export function DataSync() {
 
   const totalProgress = getTotalProgress();
 
+  // Determine which entities are currently being loaded
+  const getCurrentLoadingEntities = () => {
+    if (progress.status !== "syncing") return [];
+    
+    const loading: string[] = [];
+    
+    // Check if insights are being loaded (runs last, after campaigns/creatives/ads)
+    if (progress.insights.total > 0 && progress.insights.fetched < progress.insights.total) {
+      loading.push("insights");
+    }
+    
+    // Check if campaigns, creatives, or ads are being loaded (run in parallel)
+    // Only show these if insights haven't started yet
+    if (loading.length === 0) {
+      if (progress.campaigns.total > 0 && progress.campaigns.fetched < progress.campaigns.total) {
+        loading.push("campaigns");
+      }
+      if (progress.creatives.total > 0 && progress.creatives.fetched < progress.creatives.total) {
+        loading.push("creatives");
+      }
+      if (progress.ads.total > 0 && progress.ads.fetched < progress.ads.total) {
+        loading.push("ads");
+      }
+    }
+    
+    return loading;
+  };
+
+  const currentLoadingEntities = getCurrentLoadingEntities();
+  const loadingEntityLabel = currentLoadingEntities.length > 0
+    ? currentLoadingEntities.map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(", ")
+    : null;
+
   return (
     <Card className="mt-4 mb-4 border-border/50 shadow-sm">
       <CardContent className="pt-4 pb-4">
@@ -47,11 +80,24 @@ export function DataSync() {
                 <div className="space-y-1.5">
                   <Progress value={totalProgress} className="h-1.5" />
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <span>Campaigns: {progress.campaigns.fetched}</span>
-                      <span>Creatives: {progress.creatives.fetched}</span>
-                      <span>Ads: {progress.ads.fetched}</span>
-                      <span>Insights: {progress.insights.fetched}</span>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground flex-wrap">
+                      <span className={currentLoadingEntities.includes("campaigns") ? "font-medium text-foreground" : ""}>
+                        Campaigns: {progress.campaigns.fetched}
+                      </span>
+                      <span className={currentLoadingEntities.includes("creatives") ? "font-medium text-foreground" : ""}>
+                        Creatives: {progress.creatives.fetched}
+                      </span>
+                      <span className={currentLoadingEntities.includes("ads") ? "font-medium text-foreground" : ""}>
+                        Ads: {progress.ads.fetched}
+                      </span>
+                      <span className={currentLoadingEntities.includes("insights") ? "font-medium text-foreground" : ""}>
+                        Insights: {progress.insights.fetched}
+                      </span>
+                      {loadingEntityLabel && (
+                        <span className="text-xs font-medium text-primary">
+                          Loading {loadingEntityLabel}...
+                        </span>
+                      )}
                     </div>
                     {estimatedTimeRemaining && (
                       <span className="text-xs text-muted-foreground font-medium">
